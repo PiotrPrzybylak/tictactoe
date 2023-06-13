@@ -33,7 +33,7 @@ class TicTacToeTest {
     }
 
     @Test
-    public void shouldMakeAWinningMove() {
+    public void shouldMakeAWinningMoveOnDiagonal() {
         TicTacToe ticTacToe = new TicTacToe();
 
         ticTacToe.setInitialBoard(new char[][] {
@@ -48,6 +48,44 @@ class TicTacToeTest {
                 {'X','O','X'},
                 {'O','X','O'},
                 {'O',' ','X'},
+        }, ticTacToe.getCurrentBoard());
+    }
+
+    @Test
+    public void shouldMakeAWinningMoveOnHorizontal() {
+        TicTacToe ticTacToe = new TicTacToe();
+
+        ticTacToe.setInitialBoard(new char[][] {
+                {' ',' ',' '},
+                {'X','X',' '},
+                {' ',' ',' '},
+        });
+
+        ticTacToe.computerMove();
+
+        assertArrayEquals(new char[][] {
+                {' ',' ',' '},
+                {'X','X','X'},
+                {' ',' ',' '},
+        }, ticTacToe.getCurrentBoard());
+    }
+
+    @Test
+    public void shouldMakeAWinningMoveOnVertical() {
+        TicTacToe ticTacToe = new TicTacToe();
+
+        ticTacToe.setInitialBoard(new char[][] {
+                {' ',' ',' '},
+                {' ','X',' '},
+                {' ','X',' '},
+        });
+
+        ticTacToe.computerMove();
+
+        assertArrayEquals(new char[][] {
+                {' ','X',' '},
+                {' ','X',' '},
+                {' ','X',' '},
         }, ticTacToe.getCurrentBoard());
     }
 
