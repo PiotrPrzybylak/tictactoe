@@ -29,6 +29,14 @@ public class TicTacToe {
 
         System.out.printf("%s possible moves found: ", possibleMoves.size());
 
+        int winningMoves = 0;
+        for (Move move : possibleMoves) {
+            if (isWinningMove(move)) {
+                winningMoves++;
+            }
+        }
+
+
         if (!possibleMoves.isEmpty()) {
             Move move = possibleMoves.get(0);
             board[move.i()][move.j()] = 'X';
@@ -36,15 +44,29 @@ public class TicTacToe {
 
     }
 
+    private boolean isWinningMove(Move move) {
+        char[][] clone = copy(board);
+        clone[move.i()][move.j()] = 'X';
+        return hasPlayerWon(board,'X');
+    }
+
+    private static char[][] copy(char[][] board) {
+        char[][] clone = new char[board.length][];
+        for (int i = 0; i < clone.length; i++) {
+            clone[i] = board[i].clone();
+        }
+        return clone;
+    };
+
     public void setInitialBoard(char[][] board) {
         this.board = board;
     }
 
     public boolean hasComputerWon() {
-        return hasPlayerWon('X');
+        return hasPlayerWon(board,'X');
     }
 
-    private boolean hasPlayerWon(char player) {
+    private boolean hasPlayerWon(char[][] board, char player) {
         for (char[] row : board) {
             if (row[0] == player && row[1] == player && row[2] == player) return true;
         }
