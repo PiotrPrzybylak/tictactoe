@@ -33,7 +33,7 @@ class TicTacToeTest {
     }
 
     @Test
-    public void shouldMakeAMove2() {
+    public void shouldMakeAWinningMove() {
         TicTacToe ticTacToe = new TicTacToe();
 
         ticTacToe.setInitialBoard(new char[][] {
@@ -47,7 +47,7 @@ class TicTacToeTest {
         assertArrayEquals(new char[][] {
                 {'X','O','X'},
                 {'O','X','O'},
-                {'O','X',' '},
+                {'O',' ','X'},
         }, ticTacToe.getCurrentBoard());
     }
 
