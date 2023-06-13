@@ -20,7 +20,7 @@ class TicTacToeTest {
     }
 
     @Test
-    public void should() {
+    public void shouldMakeAMove() {
         TicTacToe ticTacToe = new TicTacToe();
 
         ticTacToe.computerMove();
@@ -29,6 +29,25 @@ class TicTacToeTest {
                 {'X',' ',' '},
                 {' ',' ',' '},
                 {' ',' ',' '},
+        }, ticTacToe.getCurrentBoard());
+    }
+
+    @Test
+    public void shouldMakeAMove2() {
+        TicTacToe ticTacToe = new TicTacToe();
+
+        ticTacToe.setInitialBoard(new char[][] {
+                {'X','O','X'},
+                {'O','X','O'},
+                {'O',' ',' '},
+        });
+
+        ticTacToe.computerMove();
+
+        assertArrayEquals(new char[][] {
+                {'X','O','X'},
+                {'O','X','O'},
+                {'O','X',' '},
         }, ticTacToe.getCurrentBoard());
     }
 
