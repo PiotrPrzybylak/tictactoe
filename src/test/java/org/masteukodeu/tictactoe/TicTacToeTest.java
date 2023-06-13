@@ -51,4 +51,19 @@ class TicTacToeTest {
         }, ticTacToe.getCurrentBoard());
     }
 
+    @Test
+    public void checkComputerWon() {
+        TicTacToe ticTacToe = new TicTacToe();
+
+        assertFalse(ticTacToe.hasComputerWon());
+
+        ticTacToe.setInitialBoard(new char[][] {
+                {'X','O','X'},
+                {'O','X','O'},
+                {'O','O','X'},
+        });
+
+        assertTrue(ticTacToe.hasComputerWon());
+    }
+
 }

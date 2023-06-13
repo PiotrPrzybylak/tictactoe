@@ -1,5 +1,8 @@
 package org.masteukodeu.tictactoe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TicTacToe {
 
     private char[][] board = new char[][]{
@@ -13,18 +16,43 @@ public class TicTacToe {
     }
 
     public void computerMove() {
+        List<Move> possibleMoves = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
             char[] row = board[i];
             for (int j = 0; j < row.length; j++) {
                 if (row[j] == ' ') {
-                    row[j] = 'X';
-                    return;
+                    possibleMoves.add(new Move(i, j));
+
                 }
             }
         }
+
+        System.out.printf("%s possible moves found: ", possibleMoves.size());
+
+        if (!possibleMoves.isEmpty()) {
+            Move move = possibleMoves.get(0);
+            board[move.i()][move.j()] = 'X';
+        }
+
     }
 
     public void setInitialBoard(char[][] board) {
         this.board = board;
+    }
+
+    public boolean hasComputerWon() {
+        return hasPlayerWon('X');
+    }
+
+    private boolean hasPlayerWon(char player) {
+        for (char[] row : board) {
+            if (row[0] == player && row[1] == player && row[2] == player) return true;
+        }
+        for (int i = 0; i < board.length; i++) {
+            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) return true;
+        }
+        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) return true;
+        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) return true;
+        return false;
     }
 }
