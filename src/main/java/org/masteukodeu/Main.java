@@ -17,6 +17,14 @@ public class Main {
             printBoard(ticTacToe.getCurrentBoard());
             ticTacToe.computerMove();
         }
+
+        printBoard(ticTacToe.getCurrentBoard());
+
+        if (ticTacToe.hasComputerWon()) {
+            System.out.println("You loose!");
+        } else {
+            System.out.println("You win!0");
+        }
     }
 
     private static void printBoard(char[][] currentBoard) {
