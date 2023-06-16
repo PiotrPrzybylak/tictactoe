@@ -11,7 +11,7 @@ public class TicTacToe {
             {' ', ' ', ' '},
     };
 
-    public Object[] getCurrentBoard() {
+    public char[][]  getCurrentBoard() {
         return board;
     }
 
@@ -81,5 +81,13 @@ public class TicTacToe {
         if (board[0][0] == player && board[1][1] == player && board[2][2] == player) return true;
         if (board[0][2] == player && board[1][1] == player && board[2][0] == player) return true;
         return false;
+    }
+
+    public void move(int row, int column) {
+        board[row][column] = 'O';
+    }
+
+    public boolean isFinished() {
+        return hasPlayerWon(board, 'X') || hasPlayerWon(board, 'O');
     }
 }
